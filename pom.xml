@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.huypva</groupId>
-    <artifactId>aws-beanstalk-spring-boot-template</artifactId>
+    <artifactId>aws-beanstalk-spring-boot-dynamo-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Parent</name>

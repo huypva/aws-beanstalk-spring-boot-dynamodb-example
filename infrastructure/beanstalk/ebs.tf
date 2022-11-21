@@ -5,7 +5,7 @@ resource "aws_elastic_beanstalk_application" "ebs_app" {
 resource "aws_elastic_beanstalk_application_version" "ebs_app_version" {
   application = aws_elastic_beanstalk_application.ebs_app.name
   bucket = var.s3_bucket_id
-  key = var.s3_bucket_object_id
+  key = var.s3_object_id
   name = "${var.app_name}-${var.app_version}"
 }
 
@@ -46,12 +46,6 @@ resource "aws_elastic_beanstalk_environment" "ebs_env" {
   }
 
   setting {
-    namespace = "aws:autoscaling:launchconfiguration"
-    name = "SecurityGroups"
-    value = aws_security_group.ebs_sg.id
-  }
-
-  setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
     value     = var.vpc_id
@@ -66,6 +60,36 @@ resource "aws_elastic_beanstalk_environment" "ebs_env" {
     namespace = "aws:ec2:vpc"
     name = "AssociatePublicIpAddress"
     value = "true"
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:environment"
+    name      = "ServiceRole"
+    value     = aws_iam_role.role_for_beanstalk.arn
+  }
+
+  setting {
+    name = "AWS_REGION"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    value = var.aws_region
+  }
+
+  setting {
+    name = "AWS_ACCESS_KEY_ID"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    value = var.aws_access_key_id
+  }
+
+  setting {
+    name = "AWS_SECRET_ACCESS_KEY"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    value = var.aws_secret_access_key
+  }
+
+  setting {
+    name = "DYNAMODB_ENPOINT"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    value = var.dynamodb_endpoint
   }
 }
 

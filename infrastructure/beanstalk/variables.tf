@@ -2,6 +2,10 @@ variable "prefix" {}
 variable "vpc_id" {}
 variable "subnet_ids" {}
 variable "s3_bucket_id" {}
-variable "s3_bucket_object_id" {}
+variable "s3_object_id" {}
 variable "app_name" {}
 variable "app_version" {}
+variable "aws_region" {}
+variable "aws_access_key_id" {}
+variable "aws_secret_access_key" {}
+variable "dynamodb_endpoint" {}

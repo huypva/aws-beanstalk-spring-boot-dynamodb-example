@@ -15,10 +15,10 @@ output "s3_bucket_id" {
 resource "aws_s3_object" "s3_object_hello_word" {
   bucket = aws_s3_bucket.s3_bucket_hello_word.id
   key = "beanstalk/hello-word"
-  source = "${path.module}/../../${var.app_name}/target/${var.app_name}-${var.app_version}.jar"
+  source = var.app_file
 }
 
-output "s3_bucket_object_id" {
+output "s3_object_id" {
   description = "The ID of the VPC"
   value       = try(aws_s3_object.s3_object_hello_word.id, "")
 }

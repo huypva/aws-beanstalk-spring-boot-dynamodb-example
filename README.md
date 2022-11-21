@@ -71,11 +71,25 @@ ebs_endpoint = "<ebs_endpoint>"
 
 ### Test request
 
-Send request to your EBS endpoint 
+- Send request to your EBS endpoint 
 
 ```shell script
-$ curl http://<ebs_endpoint>/greet?name=World
+#Test request
+$ curl -X GET http://<ebs_endpoint>/greet?name=World
 Hello World!
+
+#Input new item
+$ curl -X POST http://<ebs_endpoint>/save -d '{"id":"1", "name":"Nguyen Van A", "address":{"street":"S1","city":"HCM"}}' -H "Content-Type: application/json"
+$ curl -X POST http://<ebs_endpoint>/save -d '{"id":"2", "name":"Nguyen Van B", "address":{"street":"S2","city":"HN"}}' -H "Content-Type: application/json"
+
+#Find an item
+$ curl -X GET http://<ebs_endpoint>/find/1?name="Nguyen%20Van%20A"
+
+#Delete an item
+$ curl -X POST http://<ebs_endpoint>/delete/2?name=Nguyen%20Van%20B
+
+#Update an item
+$ curl -X POST http://<ebs_endpoint>/update -d '{"id":"1", "name":"Nguyen Van A", "address":{"street":"S1_2","city":"HCM"}}' -H "Content-Type: application/json"
 ```
 
 ### Destroy resource on aws
@@ -118,6 +132,10 @@ The code is open sourced. I encourage fellow developers to contribute and help i
 
 ## Reference
 - https://dimitri.codes/spring-boot-terraform/
+- https://www.techgeeknext.com/cloud/spring-boot-aws-dynamodb-crud-example
+- https://medium.com/swlh/deploy-aws-lambda-and-dynamodb-using-terraform-6e04f62a3165
+- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-servicerole.html
+- https://dynobase.dev/dynamodb-terraform/
 
 ## License
 This project is licensed under the Apache License v2.0. Please see LICENSE located at the project's root for more details.
