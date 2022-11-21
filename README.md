@@ -40,24 +40,31 @@ aws_secret_access_key=<your-secret-key>
 
 - Create enviroment variables
     + Add below lines in ~/.bash_profile
-```
-export AWS_ACCOUNT_ID=<your-account-id>
-export AWS_ACCESS_KEY_ID=<your-access-key>
-export AWS_SECRET_ACCESS_KEY=<your-secret-key>
-```
-    + Run to apply 
-```shell script
-$ source ~/.bash_profile
-```
+    
+    ```
+    export AWS_ACCOUNT_ID=<your-account-id>
+    export AWS_ACCESS_KEY_ID=<your-access-key>
+    export AWS_SECRET_ACCESS_KEY=<your-secret-key>
+    ```
+  
+    +  Run to apply
+    
+    ```shell script
+    $ source ~/.bash_profile
+    ```
+  
     + Check again
-```shell script
-$ echo $AWS_ACCOUNT_ID
-<your-account-id>
-$ echo $AWS_ACCESS_KEY_ID
-<your-access-key>
-$ echo $AWS_SECRET_ACCESS_KEY
-<your-secret-key>
-```    
+    
+    ```shell script
+    $ echo $AWS_ACCOUNT_ID
+    <your-account-id>
+    $ echo $AWS_ACCESS_KEY_ID
+    <your-access-key>
+    $ echo $AWS_SECRET_ACCESS_KEY
+    <your-secret-key>
+    ``` 
+    
+   
 
 ## Build spring-boot application
 
