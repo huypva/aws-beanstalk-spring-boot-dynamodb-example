@@ -6,7 +6,7 @@ init:
 
 build:
 	@printf "Building the application!\n"
-	@./mvnw clean package -Dspring.profiles.active=aws -Dmaven.test.skip
+	@./mvnw clean package -Dmaven.test.skip
 	@if [ $$? -ne 0 ]; then \
 	printf "Java application build failed! No new Lambda Function will be deployed!!!i\n"; \
 	exit -1;\
@@ -14,7 +14,7 @@ build:
 
 run-local:
 	@printf "Run local"
-	@./mvnw spring-boot:run
+	@./mvnw spring-boot:run -Dspring-boot.run.profiles=local
 
 deploy:
 	@echo "Deploying the Terraform!"

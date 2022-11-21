@@ -91,6 +91,13 @@ resource "aws_elastic_beanstalk_environment" "ebs_env" {
     namespace = "aws:elasticbeanstalk:application:environment"
     value = var.dynamodb_endpoint
   }
+
+  setting {
+    name = "SPRING_PROFILES_ACTIVE"
+    namespace = "aws:elasticbeanstalk:application:environment"
+    value = "aws"
+  }
+
 }
 
 output "ebs_url" {
