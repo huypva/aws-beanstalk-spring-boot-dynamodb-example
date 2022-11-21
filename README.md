@@ -1,7 +1,7 @@
 The example project for Deployment SpringBoot application on Amazon Elastic Beanstalk
 
 <div align="center">
-    <img src="./assets/images/aws_beanstalk_example.png"/>
+    <img src="./assets/images/aws_ebs_dynamodb.png"/>
 </div>
 
 ## Getting Started
