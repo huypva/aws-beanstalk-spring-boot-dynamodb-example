@@ -30,14 +30,35 @@ The example project for Deployment SpringBoot application on Amazon Elastic Bean
 Make sure that you have a [Amazon Account](https://aws.amazon.com/account/) and configurate aws account in ~/.aws/credentials
 ```
 [default]
-aws_access_key_id=<your-key>
-aws_secret_access_key=<your-key>
+aws_access_key_id=<your-access-key>
+aws_secret_access_key=<your-secret-key>
 ```
 
 - Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 - Install [Docker](https://docs.docker.com/engine/install/)
-    
+
+- Create enviroment variables
+    + Add below lines in ~/.bash_profile
+```
+export AWS_ACCOUNT_ID=<your-account-id>
+export AWS_ACCESS_KEY_ID=<your-access-key>
+export AWS_SECRET_ACCESS_KEY=<your-secret-key>
+```
+    + Run to apply 
+```shell script
+$ source ~/.bash_profile
+```
+    + Check again
+```shell script
+$ echo $AWS_ACCOUNT_ID
+<your-account-id>
+$ echo $AWS_ACCESS_KEY_ID
+<your-access-key>
+$ echo $AWS_SECRET_ACCESS_KEY
+<your-secret-key>
+```    
+
 ## Build spring-boot application
 
 ```shell script
@@ -123,6 +144,14 @@ Destroy complete! Resources: 13 destroyed.
 <div align="center">
     <img src="./assets/images/dynamodb.png"/>
 </div>
+
+## Run local
+
+You can run local by command below
+```
+$ make build
+$ make run-local
+```
 
 ## Contributing
 
