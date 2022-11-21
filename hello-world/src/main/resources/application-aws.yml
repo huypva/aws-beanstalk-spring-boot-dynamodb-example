@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: "hello-word"
+aws:
+  region: ${AWS_REGION}
+  accessKey: ${AWS_ACCESS_KEY_ID}
+  secretKey: ${AWS_SECRET_ACCESS_KEY}
+  dynamodb:
+    endpoint: ${DYNAMODB_ENPOINT}

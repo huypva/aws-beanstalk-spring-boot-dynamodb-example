@@ -3,9 +3,3 @@ spring:
     active: local
   application:
     name: "hello-word"
-aws:
-  region: <AWS_REGION>
-  accesskey: <AWS_ACCESS_KEY>
-  secretkey: <AWS_SECRET_KEY>
-  dynamodb:
-    endpoint: <DYNAMODB_ENPOINT>

@@ -1,8 +1,7 @@
 package io.github.huypva.helloworld.entrypoint;
 
-import io.github.huypva.helloworld.dataprovider.entity.Book;
-import io.github.huypva.helloworld.dataprovider.repository.BookRepository;
-import java.util.List;
+import io.github.huypva.helloworld.dataprovider.entity.User;
+import io.github.huypva.helloworld.dataprovider.repository.UserRepository;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
   @Autowired
-  private BookRepository bookRepository;
+  private UserRepository userRepository;
 
   @GetMapping("/greet")
   public String greet(@RequestParam(name = "name") String name) {
@@ -28,14 +27,25 @@ public class Controller {
 
 
   @PostMapping("/save")
-  public Book saveBook(@RequestBody Book book) {
-    return bookRepository.save(book);
+  public User saveUser(@RequestBody User user) {
+    return userRepository.save(user);
   }
 
   @SneakyThrows
   @GetMapping("/find/{id}")
-  public Book findBook(@PathVariable String booId) {
-    Book book = bookRepository.get(booId).orElseThrow(() -> new Exception("Book not available"));
-    return book;
+  public User findUser(@PathVariable(name = "id") String id, @RequestParam(name = "name") String name) {
+    User user = userRepository.get(id, name).orElseThrow(() -> new Exception("User not found!"));
+    return user;
   }
+
+  @PostMapping("/delete/{id}")
+  public String deleteUser(@PathVariable(name = "id") String id, @RequestParam(name = "name") String name) {
+    return userRepository.deleteById(id, name);
+  }
+
+  @PostMapping("/update")
+  public String updateUser(@RequestBody User user) {
+    return userRepository.update(user);
+  }
+
 }

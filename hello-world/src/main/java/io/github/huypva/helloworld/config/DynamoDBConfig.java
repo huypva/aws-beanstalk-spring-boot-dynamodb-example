@@ -8,10 +8,12 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author huypva
  */
+@Configuration
 public class DynamoDBConfig {
 
   @Value("${aws.dynamodb.endpoint}")
@@ -35,9 +37,9 @@ public class DynamoDBConfig {
     return AmazonDynamoDBClientBuilder
         .standard()
         .withEndpointConfiguration(
-            new AwsClientBuilder.EndpointConfiguration(dynamodbEndpoint,awsRegion))
+            new AwsClientBuilder.EndpointConfiguration(dynamodbEndpoint, awsRegion))
         .withCredentials(new AWSStaticCredentialsProvider(
-            new BasicAWSCredentials(dynamodbAccessKey,dynamodbSecretKey)))
+            new BasicAWSCredentials(dynamodbAccessKey, dynamodbSecretKey)))
         .build();
   }
 }
