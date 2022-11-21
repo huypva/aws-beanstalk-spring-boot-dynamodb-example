@@ -119,6 +119,11 @@ Destroy complete! Resources: 13 destroyed.
     <img src="./assets/images/ec2.png"/>
 </div>
 
+- [DynamoDB](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home)
+<div align="center">
+    <img src="./assets/images/dynamodb.png"/>
+</div>
+
 ## Contributing
 
 The code is open sourced. I encourage fellow developers to contribute and help improve it!
