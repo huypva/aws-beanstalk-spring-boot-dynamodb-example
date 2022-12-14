@@ -87,7 +87,7 @@ resource "aws_elastic_beanstalk_environment" "ebs_env" {
   }
 
   setting {
-    name = "DYNAMODB_ENPOINT"
+    name = "DYNAMODB_ENDPOINT"
     namespace = "aws:elasticbeanstalk:application:environment"
     value = var.dynamodb_endpoint
   }
